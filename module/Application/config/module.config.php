@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+namespace Application;
 
 return array(
     'router' => array(
@@ -17,6 +18,36 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'articles - categorie' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/articles/categorie',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'categorie',
+                    ),
+                ),
+            ),
+            'articles - detail' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/articles/detail',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'detail',
+                    ),
+                ),
+            ),
+            'articles - auteur' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/articles/auteur',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'auteur',
                     ),
                 ),
             ),
@@ -57,6 +88,12 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
+        'factories' => array(
+            'Application\Service\Article' => 'Application\Service\Factory\ArticleFactory',
+            'Application\Service\Auteur' => 'Application\Service\Factory\AuteurFactory',
+            'Application\Service\Categorie' => 'Application\Service\Factory\CategorieFactory',
+            'Application\Service\Commentaire' => 'Application\Service\Factory\CommentaireFactory'            
+        ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
@@ -73,7 +110,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',          
+            'Application\Controller\Articles' => 'Application\Controller\ArticlesController'
+            
         ),
     ),
     'view_manager' => array(
@@ -83,10 +122,14 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout'                     => __DIR__ . '/../view/layout/layout.phtml',
+            'application/index/index'           => __DIR__ . '/../view/application/index/index.phtml',
+            'application/articles/detail'       => __DIR__ . '/../view/application/articles/detail.phtml',
+            'application/articles/categorie'    => __DIR__ . '/../view/application/articles/categorie.phtml',
+            'application/articles/auteur'       => __DIR__ . '/../view/application/articles/auteur.phtml',
+            'application/articles/index'        => __DIR__ . '/../view/application/articles/index.phtml',
+            'error/404'                         => __DIR__ . '/../view/error/404.phtml',
+            'error/index'                       => __DIR__ . '/../view/error/index.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -98,5 +141,20 @@ return array(
             'routes' => array(
             ),
         ),
+    ),
+    
+    'doctrine' => array(
+        'driver' => array(
+            __NAMESPACE__ . '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                )
+            )
+        )
     ),
 );
