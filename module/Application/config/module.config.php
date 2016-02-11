@@ -16,7 +16,17 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'articles - index' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/articles/index',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
                         'action'     => 'index',
                     ),
                 ),

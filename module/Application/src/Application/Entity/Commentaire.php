@@ -36,4 +36,60 @@ class Commentaire
     
     /** @ORM\Column(type="boolean") */
     private $validation;
+    
+    function getId(){
+        return $this->id;
+    }
+    
+    function getArticle(){
+        return $this->article;
+    }
+    
+    function getNom(){
+        return $this->nom;
+    }
+    
+    function getEmail(){
+        return $this->email;
+    }
+    
+    function getText(){
+        return $this->text;
+    }
+    
+    function getDate(){
+        return $this->date;
+    }
+    
+    function getValidation(){
+        return $this->validation;
+    }
+     
+    function setId($id){
+        $this->id = $id;
+    }
+    
+    function setArticle($article){
+        $this->article = $article;
+    }
+    
+    function setNom($nom){
+        $this->nom = $nom;
+    }
+    
+    function setEmail($email){
+        $this->email = $email;
+    }
+    
+    function setText($text){
+        $this->text = $text;
+    }
+    
+    function setDate($date){
+        $this->date = $date;
+    }
+    
+    function setValidation($validation){
+        $this->validation = $validation;
+    }
 }

@@ -28,4 +28,44 @@ class Auteur
     
     /** @ORM\Column(length=255) */
     private $email;
+    
+    function getId(){
+        return $this->id;
+    }
+    
+    function getNom(){
+        return $this->nom;
+    }
+    
+    function getPrenom(){
+        return $this->prenom;
+    }
+    
+    function getUrl(){
+        return $this->url;
+    }
+    
+    function getEmail(){
+        return $this->email;
+    }
+   
+    function setId($id){
+        $this->id = $id;
+    }
+    
+    function setNom($nom){
+        $this->nom = $nom;
+    }
+    
+    function setPrenom($prenom){
+        $this->prenom = $prenom;
+    }
+    
+    function setUrl($url){
+        $this->url = $url;
+    }
+    
+    function setEmail($email){
+        $this->email = $email;
+    }
 }

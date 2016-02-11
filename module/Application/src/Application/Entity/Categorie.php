@@ -23,4 +23,27 @@ class Categorie
     /** @ORM\Column(length=250) */
     private $url;
     
+    function getId(){
+        return $this->id;
+    }
+    
+    function getNom(){
+        return $this->nom;
+    }
+    
+    function getUrl(){
+        return $this->url;
+    }
+    
+    function setId($id){
+        $this->id = $id;
+    }
+    
+    function setNom($nom){
+        $this->nom = $nom;
+    }
+    
+    function setUrl($url){
+        $this->url = $url;
+    }
 }

@@ -12,11 +12,47 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Application\Factory\ArticleFactory as ArticleFactory;
+use Application\Service\ArticleService as ArticleService;
+use Application\Service\AuteurService;
+use Application\Service\CategorieService;
+use Application\Service\CommentaireService;
+
 class ArticlesController extends AbstractActionController
 {
+    /**
+     * @var ArticleService
+     */
+    //private $articles;
+    
+    /**
+     * @param ArticleService $articles
+     
+    public function setArticles(ArticleService $articles)
+    {
+        $this->articles = $articles;
+    }
+    */
+    /**
+     * @return ArticleSer
+     
+    public function getArticles()
+    {
+        var_dump($this->articles);die;
+        return $this->articles;
+    }
+    */
     public function indexAction()
     {
-        return new ViewModel();
+        
+        $articlesFactory = new ArticleFactory(); 
+        $articlesService = $articlesFactory->createService($this->getServiceLocator());
+        
+        $articles = $articlesService->getAllActivesArticles();
+        
+        return new ViewModel(array(
+            'articles' => $articles
+        ));
     }
     
     public function auteurAction()
