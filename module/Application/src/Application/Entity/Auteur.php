@@ -18,13 +18,13 @@ class Auteur
     private $id;
     
     /** @ORM\Column(length=140) */
-    private $nom;
+    private $displayName;
     
     /** @ORM\Column(length=140) */
-    private $prenom;
+    private $username;
     
     /** @ORM\Column(length=140) */
-    private $url;
+    private $password;
     
     /** @ORM\Column(length=255) */
     private $email;
@@ -33,16 +33,16 @@ class Auteur
         return $this->id;
     }
     
-    function getNom(){
-        return $this->nom;
+    function getDisplayName(){
+        return $this->displayName;
     }
     
-    function getPrenom(){
-        return $this->prenom;
+    function getUsername(){
+        return $this->username;
     }
     
-    function getUrl(){
-        return $this->url;
+    function getPassword(){
+        return $this->password;
     }
     
     function getEmail(){
@@ -53,16 +53,16 @@ class Auteur
         $this->id = $id;
     }
     
-    function setNom($nom){
-        $this->nom = $nom;
+    function setDisplayName($displayName){
+        $this->displayName = $displayName;
     }
     
-    function setPrenom($prenom){
-        $this->prenom = $prenom;
+    function setUsername($username){
+        $this->username = $username;
     }
     
-    function setUrl($url){
-        $this->url = $url;
+    function setPassword($password){
+        $this->password = $password;
     }
     
     function setEmail($email){

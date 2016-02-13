@@ -44,7 +44,6 @@ class ArticlesController extends AbstractActionController
     */
     public function indexAction()
     {
-        
         $articlesFactory = new ArticleFactory(); 
         $articlesService = $articlesFactory->createService($this->getServiceLocator());
         
@@ -52,7 +51,8 @@ class ArticlesController extends AbstractActionController
         
         return new ViewModel(array(
             'articles' => $articles
-        ));
+            )
+        );
     }
     
     public function auteurAction()

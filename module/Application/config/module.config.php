@@ -150,9 +150,15 @@ return array(
             'application/articles/index'        => __DIR__ . '/../view/application/articles/index.phtml',
             'error/404'                         => __DIR__ . '/../view/error/404.phtml',
             'error/index'                       => __DIR__ . '/../view/error/index.phtml',
+            'zfc-user/user/login'               => __DIR__ . '/../view/application/zfc-user/user/login.phtml',
+            'zfc-user/user/register'            => __DIR__ . '/../view/application/zfc-user/user/register.phtml',
+            'zfc-user/user/index'               => __DIR__ . '/../view/application/zfc-user/user/index.phtml',
+            'zfc-user/user/change'               => __DIR__ . '/../view/application/zfc-user/user/index.phtml',
+            
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+            'zfc-user' => __DIR__ . '/../view',
         ),
     ),
     // Placeholder for console routes

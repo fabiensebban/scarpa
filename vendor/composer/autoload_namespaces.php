@@ -7,7 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
+    'ZfcUserDoctrineORM' => array($vendorDir . '/zf-commons/zfc-user-doctrine-orm/src'),
+    'ZfcUser' => array($vendorDir . '/zf-commons/zfc-user/src'),
+    'ZfcRbac\\' => array($vendorDir . '/zf-commons/zfc-rbac/src'),
+    'ZfcBase' => array($vendorDir . '/zf-commons/zfc-base/src'),
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
+    'ZendDeveloperTools' => array($vendorDir . '/zendframework/zend-developer-tools/src'),
+    'Rbac\\' => array($vendorDir . '/zfr/rbac/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),

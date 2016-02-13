@@ -64,10 +64,10 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'nom', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'prenom', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'url', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
+            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'nom', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'prenom', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'url', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
+        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
     }
 
     /**
@@ -191,34 +191,34 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function getNom()
+    public function getDisplayName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNom', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayName', array());
 
-        return parent::getNom();
+        return parent::getDisplayName();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getPrenom()
+    public function getUsername()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrenom', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', array());
 
-        return parent::getPrenom();
+        return parent::getUsername();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getUrl()
+    public function getPassword()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
 
-        return parent::getUrl();
+        return parent::getPassword();
     }
 
     /**
@@ -246,34 +246,34 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
-    public function setNom($nom)
+    public function setDisplayName($displayName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNom', array($nom));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayName', array($displayName));
 
-        return parent::setNom($nom);
+        return parent::setDisplayName($displayName);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setPrenom($prenom)
+    public function setUsername($username)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrenom', array($prenom));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', array($username));
 
-        return parent::setPrenom($prenom);
+        return parent::setUsername($username);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setUrl($url)
+    public function setPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
 
-        return parent::setUrl($url);
+        return parent::setPassword($password);
     }
 
     /**
