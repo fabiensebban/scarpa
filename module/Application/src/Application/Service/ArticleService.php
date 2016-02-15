@@ -50,7 +50,8 @@ class ArticleService
         $date = new \DateTime('now',  new \DateTimeZone( 'UTC' ));
         
         
-        try{
+        try
+        {
             $articleToSave->setAuteur($auteur);
             $articleToSave->setCategorie($categorie);
             $articleToSave->setTitre($post["titre"]);
@@ -62,7 +63,7 @@ class ArticleService
             $this->em->persist($articleToSave);
             $this->em->flush();
         }
-        catch (Exeception $e){
+        catch (\Exception $e){
             throw $e;
         }
     }

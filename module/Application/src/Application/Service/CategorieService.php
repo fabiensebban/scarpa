@@ -40,4 +40,27 @@ class CategorieService
     {
         return $this->categorieRepository->find($id);
     }
+    
+    public function isCategoryNameUsed($name)
+    {
+        return $this->categorieRepository->findBy(array('nom' => $name)) == null ? false : true;
+    }
+    
+    public function saveCategorie($name) 
+    {
+        $categorieToSave = new Categorie();
+        
+        try 
+        {
+            $categorieToSave->setNom($name);
+            $categorieToSave->setUrl("/". $name);
+        }
+        catch (\Exception $e)
+        {
+            throw $e;
+        }
+        
+        $this->em->persist($categorieToSave);
+        $this->em->flush();
+    }
 }

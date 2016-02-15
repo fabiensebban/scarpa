@@ -16,7 +16,18 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
+        	<form name="createCategory" id="createForm" action="<?php echo $this->url('categories - create'); ?>" method="post" class="error">
+                <div class="row control-group"> 
+                <div class="col-lg-6" style="height: 80px;">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Create a new category..." name="categoryName" style="height: 52px;">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Create</button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div>
+               	</div>
+           	</form>
             <form name="sentArticle" id="articleForm" action="<?php echo $this->url('articles - create'); ?>" method="post" class="error">
 				 <div class="row control-group">
                     <select class="form-control" name="categorie">
