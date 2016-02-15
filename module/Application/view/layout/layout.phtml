@@ -60,9 +60,6 @@
                         <a href="<?php echo $this->url('home')?>">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
                         <a href="<?php echo $this->url('articles - contact')?>">Contact</a>
                     </li>
                     <li>
@@ -71,6 +68,9 @@
                     	<a href="<?php echo $this->url('zfcuser/login'); ?>">Login In</a>
                     <?php }
                         else { ?>
+                        	<a href="<?php echo $this->url('articles - create');?>" style="color:#1CB11C">Add post</a>
+                        	</li>
+                        	<li>
                         	<a href="<?php echo $this->url('home')?>">Hello <?php echo $this->zfcUserIdentity()->getDisplayname();?> !</a>
                         	</li>
                         	<li>

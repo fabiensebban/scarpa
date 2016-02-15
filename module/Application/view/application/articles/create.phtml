@@ -1,0 +1,72 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('<?php echo $this->basepath('img/create.jpg')?>')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Create an article</h1>
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            <form name="sentArticle" id="articleForm" action="<?php echo $this->url('articles - create'); ?>" method="post" class="error">
+				 <div class="row control-group">
+                    <select class="form-control" name="categorie">
+                      <option>Category</option>
+                      <?php foreach ($this->categories as $categorie) { ?>
+                      
+                      <option value="<?php echo $categorie->getId(); ?>"><?php echo $categorie->getNom(); ?></option>
+                      <?php } ?>
+                    </select>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Title</label>
+                        <input type="text" class="form-control" placeholder="Title" id="name" required="" data-validation-required-message="Please enter the title." name="titre">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls error">
+                        <label>Message</label>
+                        <textarea rows="7" class="form-control" placeholder="Content" id="contenu" name="contenu" required="" data-validation-required-message="Please enter the content." aria-invalid="true"></textarea>
+                        
+                        
+                        <p class="help-block text-danger">
+                        	<ul role="alert">
+                        	<?php if(isset($this->errors))
+                                    {
+                                        foreach ($this->errors as $error){ 
+                                    ?>
+                        		<li><?php echo $error; ?></li>
+                        		 <?php }
+                                }?>
+                        	</ul>
+                        </p>
+                       
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="en_ligne"> Make this article visible
+                    </label>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <button type="submit" class="btn btn-default">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

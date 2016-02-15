@@ -51,6 +51,16 @@ return array(
                     ),
                 ),
             ),
+            'articles - create' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/articles/create',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'create',
+                    ),
+                ),
+            ),
             'articles - auteur' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(

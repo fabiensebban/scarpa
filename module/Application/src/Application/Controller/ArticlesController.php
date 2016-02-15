@@ -17,6 +17,11 @@ use Application\Service\ArticleService as ArticleService;
 use Application\Service\AuteurService;
 use Application\Service\CategorieService;
 use Application\Service\CommentaireService;
+use Zend\Http\Header\Via;
+use Zend\Mvc\View\Console\ViewManager;
+use Application\Factory\CategorieFactory;
+use Application\Entity\Article;
+use Application\Entity\Categorie;
 
 class ArticlesController extends AbstractActionController
 {
@@ -55,6 +60,47 @@ class ArticlesController extends AbstractActionController
         );
     }
     
+    public function createAction()
+    {    
+        $categorieFactory = new CategorieFactory();
+        $categorieService = $categorieFactory->createService($this->getServiceLocator());
+        
+        $categories = $categorieService->getAllCategories();
+        
+        if($this->request->isPost())
+        {
+            $post = $this->getRequest()->getPost();
+            
+            $categoriesFactory = new CategorieFactory();
+            $categorieService = $categoriesFactory->createService($this->getServiceLocator());
+            
+            $categorie = new Categorie();
+            $categorie = $categorieService->getById($post["categorie"]);
+            $post["categorie"] = $categorie;
+            
+            
+            $articlesFactory = new ArticleFactory();
+            $articlesService = $articlesFactory->createService($this->getServiceLocator());
+            
+            $article = $articlesService->isValidPost($post);
+            
+            if(!$article["valide"])
+            {
+                return new ViewModel(array( 'errors' => $article['error'], 'categories' => $categories));
+            }
+            else 
+            {
+                //Saving article 
+                $articlesService->saveArticle($post, $categorie, $this->zfcUserAuthentication()->getIdentity());
+                $this->redirect('home');
+            }
+        }
+        
+        return new ViewModel(array(
+            'categories' => $categories
+        ));
+    }
+    
     public function auteurAction()
     {
         return new ViewModel();
@@ -74,4 +120,6 @@ class ArticlesController extends AbstractActionController
     {
         return new ViewModel();    
     }
+    
+    
 }
