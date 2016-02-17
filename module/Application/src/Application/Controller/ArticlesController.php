@@ -53,7 +53,7 @@ class ArticlesController extends AbstractActionController
         $articlesService = $articlesFactory->createService($this->getServiceLocator());
         
         $articles = $articlesService->getAllActivesArticles();
-        
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page index (Home)...');
         return new ViewModel(array(
             'articles' => $articles
             )
@@ -113,11 +113,13 @@ class ArticlesController extends AbstractActionController
     
     public function detailAction()
     {
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page détail... '); 
         return new ViewModel();
     }
     
     public function contactAction()
     {
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page contact... '); 
         return new ViewModel();    
     }
     
