@@ -43,10 +43,10 @@ class ArticlesController extends AbstractActionController
      
     public function getArticles()
     {
-        var_dump($this->articles);die;
         return $this->articles;
     }
     */
+    
     public function indexAction()
     {
         $articlesFactory = new ArticleFactory(); 
@@ -54,6 +54,7 @@ class ArticlesController extends AbstractActionController
         
         $articles = $articlesService->getAllActivesArticles();
         $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page index (Home)...');
+        
         return new ViewModel(array(
             'articles' => $articles
             )
@@ -61,7 +62,13 @@ class ArticlesController extends AbstractActionController
     }
     
     public function createAction()
-    {    
+    {
+        if ($this->zfcUserAuthentication()->getIdentity()->getRole() == 'member') {
+            $this->getServiceLocator()->get('Zend\Log')->info('Quelqu\'un de non authorizé essais d\'acceder à la page de création d\'article');
+            $this->redirect()->toRoute('home');
+            
+        }
+        
         $categorieFactory = new CategorieFactory();
         $categorieService = $categorieFactory->createService($this->getServiceLocator());
         

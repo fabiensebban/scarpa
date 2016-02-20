@@ -9,6 +9,10 @@
 namespace Application;
 
 return array(
+    'zfcuser' => array(
+        'new_user_default_role' => 'member',
+    ),
+    
     'router' => array(
         'routes' => array(
             'home' => array(

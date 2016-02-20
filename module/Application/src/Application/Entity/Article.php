@@ -18,12 +18,14 @@ class Article
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Auteur")
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Auteur")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;
     
     /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Categorie")
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Categorie")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
     

@@ -11,6 +11,8 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Symfony\Component\Console\Application;
+use Application\Listener\ApplicationListener;
 
 class Module
 {
@@ -19,6 +21,15 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+     
+        $eventManager->attach(new ApplicationListener());
+        
+        //ZfrBac
+        $t = $e->getTarget();
+        
+        $t->getEventManager()->attach(
+            $t->getServiceManager()->get('ZfcRbac\View\Strategy\RedirectStrategy')
+            );
     }
 
     public function getConfig()

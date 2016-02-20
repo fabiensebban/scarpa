@@ -64,10 +64,10 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
+            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'role');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email');
+        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'id', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'displayName', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'username', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'password', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'email', '' . "\0" . 'Application\\Entity\\Auteur' . "\0" . 'role');
     }
 
     /**
@@ -235,6 +235,17 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
+    public function getRole()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', array());
+
+        return parent::getRole();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setId($id)
     {
 
@@ -285,6 +296,39 @@ class Auteur extends \Application\Entity\Auteur implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
 
         return parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRole($role)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', array($role));
+
+        return parent::setRole($role);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDefaultRole()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultRole', array());
+
+        return parent::setDefaultRole();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRoles()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoles', array());
+
+        return parent::getRoles();
     }
 
 }

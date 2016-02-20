@@ -3,12 +3,13 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ZfcRbac\Identity\IdentityInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="auteur") 
  **/
-class Auteur
+class Auteur implements IdentityInterface
 {
     /**
     * @ORM\Id 
@@ -29,6 +30,9 @@ class Auteur
     /** @ORM\Column(length=255) */
     private $email;
     
+    /** @ORM\Column(length=255) */
+    private $role;
+    
     function getId(){
         return $this->id;
     }
@@ -47,6 +51,10 @@ class Auteur
     
     function getEmail(){
         return $this->email;
+    }
+    
+    function getRole(){
+        return $this->role;
     }
    
     function setId($id){
@@ -68,4 +76,27 @@ class Auteur
     function setEmail($email){
         $this->email = $email;
     }
+    
+    function setRole($role){
+        $this->role = $role;
+    }
+    
+    /*
+     *@ORM\PrePersist
+     */
+    function setDefaultRole(){
+        $this->role = 'member';
+        
+        return $this;
+    }
+    /**
+     * {@inheritDoc}
+     * @see \ZfcRbac\Identity\IdentityInterface::getRoles()
+     */
+    public function getRoles()
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
