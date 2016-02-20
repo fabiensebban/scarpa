@@ -8,4 +8,13 @@ class CommentaireService
         $this->commentaireRepository = $commentaireRepository;
     }
 
+    public function getCommentaireFromArticleID($id)
+    {
+        $criteria = array('article' => $id,
+                          'validation' => true
+        );
+        $orderBy = array('date' => 'desc');
+
+        return $this->commentaireRepository->findBy($criteria, $orderBy, null, null);
+    }
 }

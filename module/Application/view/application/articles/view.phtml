@@ -16,7 +16,29 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<?php echo $this->article->getContenu() ?>
+				<p><?php echo $this->article->getContenu() ?></p>
+				 <form name="createComment" id="createForm" action="<?php echo $this->url('categories - create'); ?>" method="post" class="error">
+				 <?php foreach ($this->commentaires as $commentaire) { ?>
+            		<div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                        	<p><strong><?php echo $commentaire->getNom() ?></strong>, <?php echo $commentaire->getDate()->format("F j, Y") ?></p>
+                            <p class="help-block text-danger"><?php echo $commentaire->getText() ?></p>
+                    	</div>
+            		</div>
+            		<?php }?>
+                	<div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Message</label>
+                            <textarea rows="5" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message." aria-invalid="false"></textarea>
+                            <p class="help-block text-danger"></p>
+                    	</div>
+            		</div>
+            		<div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-default">Send</button>
+                        </div>
+                    </div>
+    			</form>
             </div>
         </div>
     </div>

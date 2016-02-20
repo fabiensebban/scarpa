@@ -14,9 +14,10 @@ use Zend\View\Model\ViewModel;
 
 use Application\Factory\ArticleFactory as ArticleFactory;
 use Application\Service\ArticleService as ArticleService;
+use Application\Factory\CommentaireFactory as CommentaireFactory;
+use Application\Service\CommentaireService as CommentaireService;
 use Application\Service\AuteurService;
 use Application\Service\CategorieService;
-use Application\Service\CommentaireService;
 use Zend\Http\Header\Via;
 use Zend\Mvc\View\Console\ViewManager;
 use Application\Factory\CategorieFactory;
@@ -120,7 +121,7 @@ class ArticlesController extends AbstractActionController
         return new ViewModel();
     }
     
-    public function viewAction($id)
+    public function viewAction()
     {
         $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles... ');
         $articleId = $this->params('id');
@@ -128,9 +129,14 @@ class ArticlesController extends AbstractActionController
         $atricleFactory = new ArticleFactory();
         $articleService = $atricleFactory->createService($this->getServiceLocator());
         
-        $article = $articleService->getArticleByID($articleId);
+        $commentaireFactory = new CommentaireFactory();
+        $commentaireService = $commentaireFactory->createService($this->getServiceLocator());
         
-        return new ViewModel(array( 'article' => $article ));
+        $article = $articleService->getArticleByID($articleId);
+        $commentaires = $commentaireService->getCommentaireFromArticleID($articleId);
+        return new ViewModel(array( 'article'       => $article,
+                                    'commentaires'   => $commentaires
+                                ));
     }
     
     public function contactAction()
