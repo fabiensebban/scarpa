@@ -45,13 +45,16 @@ return array(
                     ),
                 ),
             ),
-            'articles - detail' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'articles - view' => array(
+                'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/articles/detail',
+                    'route'    => '/articles/view/[:id]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Articles',
-                        'action'     => 'detail',
+                        'action'     => 'view',
+                    ),
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
                     ),
                 ),
             ),

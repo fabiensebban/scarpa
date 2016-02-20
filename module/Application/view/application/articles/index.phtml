@@ -21,7 +21,7 @@
                 <?php foreach ($this->articles as $articles) {
                         $date = $articles->getDate()->format("F j, Y");?>
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="/articles/view/<?php echo $articles->getId()?>">
                         <h2 class="post-title">
                            <?php 
                            $titre = $articles->getTitre();

@@ -36,6 +36,12 @@ class ArticleService
         return $this->articles;
     }
     
+    
+    public function getArticleByID($id)
+    {
+        return $this->articleRepository->findOneBy(array('id' => $id));
+    }
+    
     public function getAllActivesArticles()
     {
         $criteria = array('en_ligne' => true);

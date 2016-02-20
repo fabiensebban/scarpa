@@ -76,6 +76,7 @@ class ArticlesController extends AbstractActionController
         
         if($this->request->isPost())
         {
+            $this->getServiceLocator()->get('Zend\Log')->info('Une tentative de création d\'article a été déctecté');
             $post = $this->getRequest()->getPost();
             
             $categoriesFactory = new CategorieFactory();
@@ -99,6 +100,7 @@ class ArticlesController extends AbstractActionController
             {
                 //Saving article 
                 $articlesService->saveArticle($post, $categorie, $this->zfcUserAuthentication()->getIdentity());
+                $this->getServiceLocator()->get('Zend\Log')->info('Un article a été sauvgardé');
                 $this->redirect('home');
             }
         }
@@ -118,10 +120,17 @@ class ArticlesController extends AbstractActionController
         return new ViewModel();
     }
     
-    public function detailAction()
+    public function viewAction($id)
     {
-        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page détail... '); 
-        return new ViewModel();
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles... ');
+        $articleId = $this->params('id');
+        
+        $atricleFactory = new ArticleFactory();
+        $articleService = $atricleFactory->createService($this->getServiceLocator());
+        
+        $article = $articleService->getArticleByID($articleId);
+        
+        return new ViewModel(array( 'article' => $article ));
     }
     
     public function contactAction()
