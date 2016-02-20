@@ -70,6 +70,7 @@ class ArticleService
             $this->em->flush();
         }
         catch (\Exception $e){
+            $this->getServiceLocator()->get('Zend\Log')->info('Erreur au moment de sauvegarder un article');
             throw $e;
         }
     }

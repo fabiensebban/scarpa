@@ -68,13 +68,13 @@ return array(
                     ),
                 ),
             ),
-            'articles - auteur' => array(
+            'articles - createCommentaire' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/articles/auteur',
+                    'route'    => '/articles/createCommentaire',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Articles',
-                        'action'     => 'auteur',
+                        'action'     => 'createCommentaire',
                     ),
                 ),
             ),

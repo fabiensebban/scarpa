@@ -17,7 +17,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<p><?php echo $this->article->getContenu() ?></p>
-				 <form name="createComment" id="createForm" action="<?php echo $this->url('categories - create'); ?>" method="post" class="error">
+				 <form name="createComment" id="createForm" action="<?php echo $this->url('articles - createCommentaire'); ?>" method="post" class="error">
+				 <input type="hidden" name="article_id" value="<?php echo $this->article->getId() ?>">
 				 <?php foreach ($this->commentaires as $commentaire) { ?>
             		<div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -29,7 +30,7 @@
                 	<div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Message</label>
-                            <textarea rows="5" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message." aria-invalid="false"></textarea>
+                            <textarea rows="5" class="form-control" placeholder="Message" id="message" name="commentaire" required="" data-validation-required-message="Please enter a message." aria-invalid="false"></textarea>
                             <p class="help-block text-danger"></p>
                     	</div>
             		</div>

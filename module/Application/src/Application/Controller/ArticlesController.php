@@ -84,9 +84,12 @@ class ArticlesController extends AbstractActionController
             $categorieService = $categoriesFactory->createService($this->getServiceLocator());
             
             $categorie = new Categorie();
-            $categorie = $categorieService->getById($post["categorie"]);
-            $post["categorie"] = $categorie;
             
+            $categorie = $categorieService->getById($post["categorie"]);
+            if($categorie == null)
+                return $this->notFoundAction();
+            
+            $post["categorie"] = $categorie;
             
             $articlesFactory = new ArticleFactory();
             $articlesService = $articlesFactory->createService($this->getServiceLocator());
@@ -111,8 +114,41 @@ class ArticlesController extends AbstractActionController
         ));
     }
     
-    public function auteurAction()
+    public function createCommentaireAction()
     {
+        if($this->request->isPost())
+        {
+            $this->getServiceLocator()->get('Zend\Log')->info('Post sur la création d\'un commentaire');
+            
+            $articlesFactory = new ArticleFactory();
+            $articlesService = $articlesFactory->createService($this->getServiceLocator());
+            
+            $commentaireFactory = new CommentaireFactory();
+            $commentaireService = $commentaireFactory->createService($this->getServiceLocator());
+            
+            $post = $this->getRequest()->getPost();
+            $articleId = $post['article_id'];
+            
+            $article = new Article();
+            $article = $articlesService->getArticleByID($articleId);
+            if($article === null)
+            {
+                return $this->notFoundAction();
+            }
+            
+            $user['email'] = $this->zfcUserAuthentication()->getIdentity()->getEmail();
+            $user['nom'] = $this->zfcUserAuthentication()->getIdentity()->getDisplayname();
+            
+            $commentaireService->saveCommentaire($post, $user, $article);
+            
+            $this->redirect()->toRoute('articles - view', array(
+                'controller' => 'articles',
+                'action' =>  'view',
+                'id' => $articleId
+            ));
+            
+            $this->redirect()->toRoute('articles/view/'. $articleId);
+        }
         return new ViewModel();
     }
     
@@ -133,7 +169,13 @@ class ArticlesController extends AbstractActionController
         $commentaireService = $commentaireFactory->createService($this->getServiceLocator());
         
         $article = $articleService->getArticleByID($articleId);
+        
+        if($article === null)
+        {
+            return $this->notFoundAction();
+        }
         $commentaires = $commentaireService->getCommentaireFromArticleID($articleId);
+        
         return new ViewModel(array( 'article'       => $article,
                                     'commentaires'   => $commentaires
                                 ));
@@ -144,6 +186,7 @@ class ArticlesController extends AbstractActionController
         $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page contact... '); 
         return new ViewModel();    
     }
+    
     
     
 }
