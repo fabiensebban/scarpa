@@ -39,6 +39,7 @@ class CommentaireService
             $this->em->flush();
         }
         catch (\Exception $e){
+            $this->getServiceLocator()->get('Zend\LogError')->err('Erreur lors de la sauvegarder du commentaire');
             throw $e;
         }
     }
