@@ -176,7 +176,7 @@ class ArticlesController extends AbstractActionController
         }
         $commentaires = $commentaireService->getCommentaireFromArticleID($articleId);
         
-        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles : nom article => '.$article);
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles : Titre article => '.$article->getTitre());
         return new ViewModel(array( 'article'       => $article,
                                     'commentaires'   => $commentaires
                                 ));
