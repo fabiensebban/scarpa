@@ -22,6 +22,20 @@ return array(
 
             return $log;
         },
+        'Zend\LogError' => function ($sm) {
+            $log = new Zend\Log\Logger();
+            $writer = new Zend\Log\Writer\Stream('./data/logfileError');
+            $log->addWriter($writer);
+
+            return $log;
+        },
+        'Zend\LogWarning' => function ($sm) {
+            $log = new Zend\Log\Logger();
+            $writer = new Zend\Log\Writer\Stream('./data/logfileError');
+            $log->addWriter($writer);
+
+            return $log;
+        },
     ),
 ),
 );

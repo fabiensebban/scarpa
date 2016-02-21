@@ -54,7 +54,6 @@ class ArticlesController extends AbstractActionController
         $articlesService = $articlesFactory->createService($this->getServiceLocator());
         
         $articles = $articlesService->getAllActivesArticles();
-        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page index (Home)...');
         
         return new ViewModel(array(
             'articles' => $articles
@@ -65,7 +64,7 @@ class ArticlesController extends AbstractActionController
     public function createAction()
     {
         if ($this->zfcUserAuthentication()->getIdentity()->getRole() == 'member') {
-            $this->getServiceLocator()->get('Zend\Log')->info('Quelqu\'un de non authorizé essais d\'acceder à la page de création d\'article');
+            $this->getServiceLocator()->get('Zend\LogWarning')->warr('Quelqu\'un de non authorizé essais d\'acceder à la page de création d\'article');
             $this->redirect()->toRoute('home');
             
         }
@@ -77,7 +76,7 @@ class ArticlesController extends AbstractActionController
         
         if($this->request->isPost())
         {
-            $this->getServiceLocator()->get('Zend\Log')->info('Une tentative de création d\'article a été déctecté');
+            $this->getServiceLocator()->get('Zend\LogWarning')->warr('Une tentative de création d\'article a été déctecté');
             $post = $this->getRequest()->getPost();
             
             $categoriesFactory = new CategorieFactory();
@@ -98,6 +97,7 @@ class ArticlesController extends AbstractActionController
             
             if(!$article["valide"])
             {
+                $this->getServiceLocator()->get('Zend\LogError')->err('Erreur : '.$article['error']);
                 return new ViewModel(array( 'errors' => $article['error'], 'categories' => $categories));
             }
             else 
@@ -159,7 +159,7 @@ class ArticlesController extends AbstractActionController
     
     public function viewAction()
     {
-        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles... ');
+        
         $articleId = $this->params('id');
         
         $atricleFactory = new ArticleFactory();
@@ -176,6 +176,7 @@ class ArticlesController extends AbstractActionController
         }
         $commentaires = $commentaireService->getCommentaireFromArticleID($articleId);
         
+        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page view articles : nom article => '.$article);
         return new ViewModel(array( 'article'       => $article,
                                     'commentaires'   => $commentaires
                                 ));
@@ -183,7 +184,6 @@ class ArticlesController extends AbstractActionController
     
     public function contactAction()
     {
-        $this->getServiceLocator()->get('Zend\Log')->info('Accès à la page contact... '); 
         return new ViewModel();    
     }
     
