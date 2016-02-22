@@ -41,6 +41,14 @@
                            ?>
                         </h3>
                     </a>
+                    <?php if($this->userRole == 'auteur') {?>
+                    	<?php if($articles->getEn_ligne()) {?>
+                    	<a href="/articles/desactiver/<?php echo $articles->getId()?>"><h3 class="post-subtitle" style="text-align:right">Click for DISABLE</h3></a>
+                        <?php } 
+                        else {?>
+                        <a href="/articles/activer/<?php echo $articles->getId()?>"><h3 class="post-subtitle" style="text-align:right">Click for ENABLE</h3></a>
+                    	<?php }
+                           }?>
                     <p class="post-meta">Posted on <?php echo $date?></p>
                 </div>
                 <hr>

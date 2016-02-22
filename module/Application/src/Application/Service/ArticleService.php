@@ -50,6 +50,53 @@ class ArticleService
         return $this->articleRepository->findBy($criteria, $orderBy, null, null);
     }
     
+    public function getAllArticles()
+    {
+        $criteria = array();
+        $orderBy = array('date' => 'desc');
+    
+        return $this->articleRepository->findBy($criteria, $orderBy, null, null);
+    }
+    
+    public function desactivateArticle($articleID)
+    {
+        if($this->zfcUserAuthentication()->getIdentity()->getRole() != 'auteur')
+        {
+            $this->redirect()->toRoute('home');
+        }
+        
+        $article = new Article();
+        $article = $this->articleRepository->findOneBy(array('id' => $articleID));
+        if($article){
+            if($article->getEn_Ligne())
+            {
+                $article->setEn_Ligne(false);
+                $this->em->persist($article);
+                $this->em->flush();
+            }
+        }
+    }
+    
+    public function activateArticle($articleID)
+    {
+        if($this->zfcUserAuthentication()->getIdentity()->getRole() != 'auteur')
+        {
+            $this->redirect()->toRoute('home');
+        }
+        
+        $article = new Article();
+        $article = $this->articleRepository->findOneBy(array('id' => $articleID));
+        
+        if($article){
+            if(!$article->getEn_Ligne())
+            {
+                $article->setEn_Ligne(true);
+                $this->em->persist($article);
+                $this->em->flush();
+            }
+        }
+    }
+    
     public function saveArticle($post, Categorie $categorie, Auteur $auteur)
     {
         $articleToSave = new Article();

@@ -35,13 +35,57 @@ return array(
                     ),
                 ),
             ),
-            'articles - categorie' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'commentaire - desactiver' => array(
+                'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/articles/categorie',
+                    'route'    => '/commentaire/desactiver/[:articleID]/[:commentaireID]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Commentaires',
+                        'action'     => 'desactiver',
+                    ),
+                    'constraints' => array(
+                        'articleID'     => '[0-9]+',
+                        'commentaireID' => '[0-9]+',
+                    ),
+                ),
+            ),
+            'commentaire - activer' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/commentaire/activer/[:articleID]/[:commentaireID]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Commentaires',
+                        'action'     => 'activer',
+                    ),
+                    'constraints' => array(
+                        'articleID'     => '[0-9]+',
+                        'commentaireID' => '[0-9]+',
+                    ),
+                ),
+            ),
+            'articles - desactiver' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/articles/desactiver/[:id]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Articles',
-                        'action'     => 'categorie',
+                        'action'     => 'desactiver',
+                    ),
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
+                    ),
+                ),
+            ),
+            'articles - activer' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/articles/activer/[:id]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Articles',
+                        'action'     => 'activer',
+                    ),
+                    'constraints' => array(
+                        'id'     => '[0-9]+',
                     ),
                 ),
             ),
@@ -159,7 +203,8 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',          
             'Application\Controller\Articles' => 'Application\Controller\ArticlesController',
-            'Application\Controller\Categories' => 'Application\Controller\CategoriesController'
+            'Application\Controller\Categories' => 'Application\Controller\CategoriesController',
+            'Application\Controller\Commentaires' => 'Application\Controller\CommentairesController'
             
         ),
     ),

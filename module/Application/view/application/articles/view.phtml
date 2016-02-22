@@ -22,7 +22,15 @@
 				 <?php foreach ($this->commentaires as $commentaire) { ?>
             		<div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                        	<p><strong><?php echo $commentaire->getNom() ?></strong>, <?php echo $commentaire->getDate()->format("F j, Y") ?></p>
+                        	<p><strong><?php echo $commentaire->getNom() ?></strong>, <?php echo $commentaire->getDate()->format("F j, Y") ?> 
+                        		<?php if($this->userRole == 'auteur') { ?> - 
+                            		<?php if($commentaire->getValidation()) {?>
+                            			<a style="color:red" href="/commentaire/desactiver/<?php echo $this->article->getId() ?>/<?php echo $commentaire->getId() ?>" >Disable this comment</a> 
+                            		<?php } else {?>
+                            			<a style="color:green" href="/commentaire/activer/<?php echo $this->article->getId() ?>/<?php echo $commentaire->getId() ?>">Enable this comment</a>
+                            		<?php }?>
+                            		
+                        		<?php } ?></p>
                             <p class="help-block text-danger"><?php echo $commentaire->getText() ?></p>
                     	</div>
             		</div>
