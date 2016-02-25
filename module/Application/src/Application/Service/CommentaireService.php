@@ -36,7 +36,7 @@ class CommentaireService
             ),
             'port' => 587,
         ));
-        $messageToSend = '<p>Hello '. $user['nom']. ',</p></br><p>The folowing comment have been posted on the article: </p>' . $article->getTitre() . '</br><p><i>'. $comment .'</i></p>';
+        $messageToSend = '<p>Hello.</p></br><p>The folowing comment have been posted by '. $user['nom'] .' on the article: </p>' . $article->getTitre() . '</br><p><i>'. $comment .'</i></p>';
         $html = new MimePart($messageToSend);
         $html->type = "text/html";
         $body = new MimeMessage();

@@ -60,10 +60,6 @@ class ArticleService
     
     public function desactivateArticle($articleID)
     {
-        if($this->zfcUserAuthentication()->getIdentity()->getRole() != 'auteur')
-        {
-            $this->redirect()->toRoute('home');
-        }
         
         $article = new Article();
         $article = $this->articleRepository->findOneBy(array('id' => $articleID));
@@ -79,10 +75,6 @@ class ArticleService
     
     public function activateArticle($articleID)
     {
-        if($this->zfcUserAuthentication()->getIdentity()->getRole() != 'auteur')
-        {
-            $this->redirect()->toRoute('home');
-        }
         
         $article = new Article();
         $article = $this->articleRepository->findOneBy(array('id' => $articleID));

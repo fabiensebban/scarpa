@@ -42,3 +42,29 @@
 2016-02-23T00:18:09+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
 2016-02-23T00:18:18+01:00 INFO (6): Post sur la création d'un commentaire
 2016-02-23T00:18:20+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:17:30+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:17:48+01:00 INFO (6): Post sur la création d'un commentaire
+2016-02-23T16:17:51+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:26:22+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:26:31+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:32:06+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T16:34:22+01:00 INFO (6): Une tentative de création d'article a été déctecté
+2016-02-23T16:34:22+01:00 INFO (6): Un article a été sauvgardé
+2016-02-23T16:34:59+01:00 INFO (6): Accès à la page view articles : Titre article => titre  test scarpa
+2016-02-23T16:35:07+01:00 INFO (6): Post sur la création d'un commentaire
+2016-02-23T16:35:09+01:00 INFO (6): Accès à la page view articles : Titre article => titre  test scarpa
+2016-02-23T18:29:51+01:00 INFO (6): Accès à la page view articles : Titre article => titre  test scarpa
+2016-02-23T18:30:03+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T18:30:12+01:00 INFO (6): Post sur la création d'un commentaire
+2016-02-23T18:30:14+01:00 INFO (6): Accès à la page view articles : Titre article => Ceci est un article de test
+2016-02-23T18:33:19+01:00 INFO (6): Une tentative de création d'article a été déctecté
+2016-02-23T18:33:19+01:00 INFO (6): Un article a été sauvgardé
+2016-02-23T18:33:58+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:48:30+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:48:38+01:00 INFO (6): Post sur la création d'un commentaire
+2016-02-23T18:48:40+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:48:54+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:49:00+01:00 INFO (6): Post sur la création d'un commentaire
+2016-02-23T18:49:01+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:49:20+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
+2016-02-23T18:49:27+01:00 INFO (6): Accès à la page view articles : Titre article => titre post
